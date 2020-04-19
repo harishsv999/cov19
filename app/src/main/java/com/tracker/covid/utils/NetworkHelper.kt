@@ -12,7 +12,7 @@ import java.net.ConnectException
 /**
  * A helper class for all network related operations.
  */
-class NetworkHelper (private val context: Context) {
+class NetworkHelper(private val context: Context) {
 
     companion object {
         private const val TAG = "NetworkHelper"

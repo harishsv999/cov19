@@ -5,43 +5,39 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.tracker.covid.BuildConfig
+import com.tracker.covid.CoVidApplication
 import com.tracker.covid.R
-import com.tracker.covid.data.Networking
-import com.tracker.covid.data.remote.NetworkService
 import com.tracker.covid.data.remote.repositories.CoVidRepository
+import com.tracker.covid.di.component.DaggerActivityComponent
+import com.tracker.covid.di.modules.ActivityModule
 import com.tracker.covid.utils.NetworkHelper
-import com.tracker.covid.utils.ViewModelFactory
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var coVidRepository: CoVidRepository
+    @Inject
+    lateinit var coVidRepository: CoVidRepository
 
-    private lateinit var viewModel: HomeViewModel
+    @Inject
+    lateinit var viewModel: HomeViewModel
 
-    private lateinit var networkHelper: NetworkHelper
+    @Inject
+    lateinit var networkHelper: NetworkHelper
 
-    private lateinit var compositeDisposable: CompositeDisposable
+    @Inject
+    lateinit var compositeDisposable: CompositeDisposable
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val networkService = Networking.create(
-            BuildConfig.BASE_URL,
-            application.cacheDir,
-            10 * 1024 * 1024 // 10MB
-        )
-        compositeDisposable = CompositeDisposable()
-        coVidRepository = CoVidRepository(compositeDisposable, networkService)
-        networkHelper = NetworkHelper(this)
-        viewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(coVidRepository, compositeDisposable, networkHelper)
-        ).get(HomeViewModel::class.java)
+        DaggerActivityComponent.builder()
+            .appComponent((application as CoVidApplication).appComponent)
+            .activityModule(ActivityModule(this))
+            .build()
+            .inject(this)
 
         viewModel.fetchGlobalCoVidData()
         viewModel.getCountriesList()
