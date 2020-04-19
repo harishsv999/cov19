@@ -11,12 +11,13 @@ import io.reactivex.disposables.CompositeDisposable
  */
 class ViewModelFactory(
     private val repository: CoVidRepository,
-    private val compositeDisposable: CompositeDisposable
+    private val compositeDisposable: CompositeDisposable,
+    private val networkHelper: NetworkHelper
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-            HomeViewModel(this.repository, compositeDisposable) as T
+            HomeViewModel(this.repository ,compositeDisposable , networkHelper) as T
         } else {
             throw IllegalArgumentException("ViewModel Not Found")
         }
