@@ -1,4 +1,4 @@
-package com.tracker.covid.data.remote.response
+package com.tracker.covid.data.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

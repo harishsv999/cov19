@@ -1,9 +1,9 @@
-package com.tracker.covid.data.remote.response
+package com.tracker.covid.data.remote.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Global (
+data class Global(
     @Expose
     @SerializedName("NewConfirmed")
     var newConfirmedCases: Long,
@@ -28,5 +28,5 @@ data class Global (
     @SerializedName("TotalRecovered")
     var totalRecoveredCases: Long
 
-    ){
+) {
 }

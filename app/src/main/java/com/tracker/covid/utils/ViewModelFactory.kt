@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 /**
  * A factory class to create custom view model with parameters.
  */
-class ViewModelFactory (
+class ViewModelFactory(
     private val repository: CoVidRepository,
     private val compositeDisposable: CompositeDisposable
 ) : ViewModelProvider.Factory {
