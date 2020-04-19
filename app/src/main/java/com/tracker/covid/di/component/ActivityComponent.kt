@@ -1,7 +1,9 @@
 package com.tracker.covid.di.component
 
+import com.tracker.covid.data.remote.repositories.CoVidRepository
 import com.tracker.covid.di.ActivityScope
 import com.tracker.covid.di.modules.ActivityModule
+import com.tracker.covid.ui.countries.CountriesFragment
 import com.tracker.covid.ui.home.HomeActivity
 import dagger.Component
 
@@ -10,4 +12,7 @@ import dagger.Component
 interface ActivityComponent {
 
     fun inject(homeActivity: HomeActivity)
+
+    fun inject(countriesFragment: CountriesFragment)
+
 }

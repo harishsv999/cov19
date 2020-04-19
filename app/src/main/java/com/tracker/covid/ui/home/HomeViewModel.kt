@@ -20,7 +20,7 @@ class HomeViewModel(
 ) : ViewModel() {
 
     val globalCoVidData = MutableLiveData<GlobalSummary>()
-    private val countriesList = MutableLiveData<List<CountryCodes>>()
+    val countriesList = MutableLiveData<List<CountryCodes>>()
     val countryRecordsByDay = MutableLiveData<List<CountryCases>>()
 
     val messageStringId: MutableLiveData<Resource<Int>> = MutableLiveData()

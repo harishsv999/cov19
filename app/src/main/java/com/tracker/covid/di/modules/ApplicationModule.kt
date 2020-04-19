@@ -17,7 +17,6 @@ class ApplicationModule(private val application: Application) {
     fun getAppContext() = application
 
     @Provides
-    @Singleton
     fun provideNetworkService(): NetworkService = Networking.create(
         BuildConfig.BASE_URL,
         application.cacheDir,
