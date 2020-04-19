@@ -19,9 +19,12 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled true
+            shrinkResources true
             buildConfigField("String", "BASE_URL", "\"https://api.covid19api.com/\"")
         }
         release {
+            shrinkResources true
             minifyEnabled true // to apply the proguard
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://api.covid19api.com/\"")
@@ -56,5 +59,9 @@ dependencies {
     implementation "com.google.dagger:dagger:2.21"
     kapt "com.google.dagger:dagger-compiler:2.21"
 
+    // Navigation Bar
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
 }

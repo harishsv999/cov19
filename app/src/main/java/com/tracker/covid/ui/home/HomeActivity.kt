@@ -36,12 +36,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        DaggerActivityComponent.builder()
-            .appComponent((application as CoVidApplication).appComponent)
-            .activityModule(ActivityModule(this))
-            .build()
-            .inject(this)
-
         val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
         ft.add(R.id.container, CountriesFragment(), "NewFragmentTag")
         ft.commit()
