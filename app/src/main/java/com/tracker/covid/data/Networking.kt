@@ -15,8 +15,8 @@ object Networking {
 
     private const val NETWORK_CALL_TIMEOUT: Long = 60
 
-    fun create(baseUrl: String, cacheDir: File, cacheSize: Long) : NetworkService {
-         val retrofit =  Retrofit.Builder()
+    fun create(baseUrl: String, cacheDir: File, cacheSize: Long): NetworkService {
+        val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
@@ -29,8 +29,8 @@ object Networking {
                             else HttpLoggingInterceptor.Level.NONE
                         }
                     )
-                    .readTimeout(NETWORK_CALL_TIMEOUT , TimeUnit.SECONDS)
-                    .writeTimeout(NETWORK_CALL_TIMEOUT , TimeUnit.SECONDS)
+                    .readTimeout(NETWORK_CALL_TIMEOUT, TimeUnit.SECONDS)
+                    .writeTimeout(NETWORK_CALL_TIMEOUT, TimeUnit.SECONDS)
                     .build()
             ).build()
         return retrofit.create(NetworkService::class.java)
