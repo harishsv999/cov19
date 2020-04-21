@@ -7,7 +7,6 @@ import com.tracker.covid.data.remote.response.CountryCases
 import com.tracker.covid.data.remote.response.GlobalSummary
 import com.tracker.covid.ui.base.BaseViewModel
 import com.tracker.covid.utils.NetworkHelper
-import com.tracker.covid.utils.Resource
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
@@ -21,56 +20,46 @@ class HomeViewModel(
     val countriesList = MutableLiveData<List<CountryCodes>>()
     val countryRecordsByDay = MutableLiveData<List<CountryCases>>()
 
-    val messageStringId: MutableLiveData<Resource<Int>> = MutableLiveData()
-    val messageString: MutableLiveData<Resource<String>> = MutableLiveData()
-
-
     override fun onCreate() {
         fetchGlobalCoVidData()
         getCountriesList()
         getCountryRecordsByDay("")
     }
 
-    fun fetchGlobalCoVidData() {
-        if (checkInternetConnectionWithMessage()) {
-            compositeDisposable.addAll(
-                coVidRepository.getGlobalCoVidSummary()
-                    .subscribeOn(Schedulers.io())
-                    .subscribe({
-                        globalCoVidData.postValue(it)
-                    }, {
-                        handleNetworkError(it)
-                    })
-            )
-        }
+    private fun fetchGlobalCoVidData() {
+        compositeDisposable.addAll(
+            coVidRepository.getGlobalCoVidSummary()
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    globalCoVidData.postValue(it)
+                }, {
+                    handleNetworkError(it)
+                })
+        )
     }
 
     fun getCountriesList() {
-        if (checkInternetConnectionWithMessage()) {
-            compositeDisposable.addAll(
-                coVidRepository.getCountriesList()
-                    .subscribeOn(Schedulers.io())
-                    .subscribe({
-                        countriesList.postValue(it)
-                    }, {
-                        handleNetworkError(it)
-                    })
-            )
-        }
+        compositeDisposable.addAll(
+            coVidRepository.getCountriesList()
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    countriesList.postValue(it)
+                }, {
+                    handleNetworkError(it)
+                })
+        )
     }
 
     fun getCountryRecordsByDay(countrySlug: String) {
-        if (checkInternetConnectionWithMessage()) {
-            compositeDisposable.addAll(
-                coVidRepository.getCountryRecordsByDay(countrySlug)
-                    .subscribeOn(Schedulers.io())
-                    .subscribe({
-                        countryRecordsByDay.postValue(it)
-                    }, {
-                        handleNetworkError(it)
-                    })
-            )
-        }
+        compositeDisposable.addAll(
+            coVidRepository.getCountryRecordsByDay(countrySlug)
+                .subscribeOn(Schedulers.io())
+                .subscribe({
+                    countryRecordsByDay.postValue(it)
+                }, {
+                    handleNetworkError(it)
+                })
+        )
     }
 
 
