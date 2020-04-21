@@ -5,6 +5,7 @@ import com.tracker.covid.di.ActivityScope
 import com.tracker.covid.di.FragmentScope
 import com.tracker.covid.di.modules.FragmentModule
 import com.tracker.covid.ui.countries.CountriesFragment
+import com.tracker.covid.ui.home.HomeFragment
 import dagger.Component
 
 @ActivityScope
@@ -13,4 +14,5 @@ interface FragmentComponent {
 
     fun inject (countriesFragment: CountriesFragment)
 
+    fun inject (homeFragment: HomeFragment)
 }
