@@ -25,8 +25,8 @@ class HomeViewModel(
         getCountriesList()
         getCountryRecordsByDay("")
     }
-
-    private fun fetchGlobalCoVidData() {
+    // Gets all global country records.
+    fun fetchGlobalCoVidData() {
         compositeDisposable.addAll(
             coVidRepository.getGlobalCoVidSummary()
                 .subscribeOn(Schedulers.io())
@@ -37,7 +37,7 @@ class HomeViewModel(
                 })
         )
     }
-
+    // Gets all global country details.
     fun getCountriesList() {
         compositeDisposable.addAll(
             coVidRepository.getCountriesList()
@@ -49,7 +49,7 @@ class HomeViewModel(
                 })
         )
     }
-
+    // Gets all global records by day.
     fun getCountryRecordsByDay(countrySlug: String) {
         compositeDisposable.addAll(
             coVidRepository.getCountryRecordsByDay(countrySlug)

@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tracker.covid.R
 import com.tracker.covid.data.remote.model.CountryCodes
-import kotlinx.android.synthetic.main.raw_countries.view.*
+import kotlinx.android.synthetic.main.countries_item.view.*
 
 class CountriesAdapter(private val countiesList: List<CountryCodes>) :
     RecyclerView.Adapter<CountriesAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val inflater =
-            LayoutInflater.from(parent.context).inflate(R.layout.raw_countries, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.countries_item, parent, false)
         return CountryViewHolder(inflater)
     }
 

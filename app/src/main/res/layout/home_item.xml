@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="32dp"
+    android:paddingVertical="16dp">
+
+    <TextView
+        android:id="@+id/countryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2"
+        android:paddingHorizontal="8dp"
+        android:text="India"
+        android:gravity="center|end"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/flag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deathTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:text="Deaths"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flag" />
+
+    <TextView
+        android:id="@+id/newDeaths"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/deathTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deathTitle" />
+
+    <TextView
+        android:id="@+id/totalDeaths"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="890012"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/deathTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newDeaths" />
+
+    <TextView
+        android:id="@+id/recoverTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:text="Recovered"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/deathTitle"
+        app:layout_constraintTop_toTopOf="@+id/deathTitle" />
+
+    <TextView
+        android:id="@+id/newRecover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/recoverTitle"
+        app:layout_constraintEnd_toEndOf="@id/recoverTitle"
+        app:layout_constraintTop_toBottomOf="@+id/recoverTitle" />
+
+    <TextView
+        android:id="@+id/totalRecover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="890012"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/recoverTitle"
+        app:layout_constraintEnd_toEndOf="@id/recoverTitle"
+        app:layout_constraintTop_toBottomOf="@+id/newRecover" />
+
+
+    <TextView
+        android:id="@+id/infectTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:text="Infected"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/recoverTitle"
+        app:layout_constraintTop_toTopOf="@+id/deathTitle" />
+
+    <TextView
+        android:id="@+id/newInfected"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/infectTitle"
+        app:layout_constraintEnd_toEndOf="@id/infectTitle"
+        app:layout_constraintTop_toBottomOf="@+id/infectTitle" />
+
+    <TextView
+        android:id="@+id/totalInfected"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="890012"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@id/infectTitle"
+        app:layout_constraintEnd_toEndOf="@id/infectTitle"
+        app:layout_constraintTop_toBottomOf="@+id/newInfected" />
+
+    <TextView
+        android:id="@+id/newTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="New"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/newInfected" />
+
+    <TextView
+        android:id="@+id/totalTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textSize="18sp"
+        android:maxLength="6"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/totalInfected" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

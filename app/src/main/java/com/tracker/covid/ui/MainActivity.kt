@@ -1,4 +1,4 @@
-package com.tracker.covid.ui.home
+package com.tracker.covid.ui
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class HomeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

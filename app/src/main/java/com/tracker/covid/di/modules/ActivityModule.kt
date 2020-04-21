@@ -3,7 +3,7 @@ package com.tracker.covid.di.modules
 import androidx.lifecycle.ViewModelProviders
 import com.tracker.covid.data.remote.NetworkService
 import com.tracker.covid.data.remote.repositories.CoVidRepository
-import com.tracker.covid.ui.home.HomeActivity
+import com.tracker.covid.ui.MainActivity
 import com.tracker.covid.ui.home.HomeViewModel
 import com.tracker.covid.utils.NetworkHelper
 import com.tracker.covid.ui.base.ViewModelFactory
@@ -12,7 +12,7 @@ import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
 
 @Module
-class ActivityModule(private val activity: HomeActivity) {
+class ActivityModule(private val activity: MainActivity) {
 
     @Provides
     fun provideCoVidRepository(
