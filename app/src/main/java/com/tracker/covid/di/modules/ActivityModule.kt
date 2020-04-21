@@ -6,11 +6,10 @@ import com.tracker.covid.data.remote.repositories.CoVidRepository
 import com.tracker.covid.ui.home.HomeActivity
 import com.tracker.covid.ui.home.HomeViewModel
 import com.tracker.covid.utils.NetworkHelper
-import com.tracker.covid.utils.ViewModelFactory
+import com.tracker.covid.ui.base.ViewModelFactory
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
-import javax.inject.Singleton
 
 @Module
 class ActivityModule(private val activity: HomeActivity) {
@@ -29,8 +28,9 @@ class ActivityModule(private val activity: HomeActivity) {
     ): HomeViewModel =
         ViewModelProviders.of(
             activity,
-            ViewModelFactory(coVidRepository, compositeDisposable, networkHelper)
-        ).get(HomeViewModel::class.java)
+            ViewModelFactory(HomeViewModel::class) {
+                HomeViewModel(coVidRepository, compositeDisposable, networkHelper)
+            }).get(HomeViewModel::class.java)
 
     @Provides
     fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()

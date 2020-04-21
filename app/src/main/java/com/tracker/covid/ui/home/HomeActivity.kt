@@ -19,63 +19,14 @@ import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var coVidRepository: CoVidRepository
-
-    @Inject
-    lateinit var viewModel: HomeViewModel
-
-    @Inject
-    lateinit var networkHelper: NetworkHelper
-
-    @Inject
-    lateinit var compositeDisposable: CompositeDisposable
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        DaggerActivityComponent.builder()
-            .appComponent((application as CoVidApplication).appComponent)
-            .activityModule(ActivityModule(this))
-            .build()
-            .inject(this)
 
         val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
         ft.add(R.id.container, CountriesFragment(), "NewFragmentTag")
         ft.commit()
 
-        viewModel.fetchGlobalCoVidData()
-        viewModel.getCountriesList()
-        viewModel.getCountryRecordsByDay("pass country slug here, currently hardcoded")
-
-        subscribeDataListener()
-        subscribeErrorListener()
     }
-
-    private fun subscribeErrorListener() {
-        viewModel.messageString.observe(this, Observer {
-            it.data?.run { showMessage(this) }
-        })
-
-        viewModel.messageStringId.observe(this, Observer {
-            it.data?.run { showMessage(this) }
-        })
-
-    }
-
-    private fun subscribeDataListener() {
-        viewModel.globalCoVidData.observe(this, Observer {
-            Toast.makeText(this@HomeActivity, it.toString(), Toast.LENGTH_LONG).show()
-        })
-    }
-
-
-    private fun showMessage(message: String) =
-        this.let { Toast.makeText(this, message, Toast.LENGTH_LONG).show() }
-
-    private fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
-
 
 }

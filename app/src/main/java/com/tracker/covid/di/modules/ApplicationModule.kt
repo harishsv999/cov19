@@ -26,7 +26,6 @@ class ApplicationModule(private val application: Application) {
     @Provides
     fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
 
-
     @Singleton
     @Provides
     fun provideNetworkHelper(): NetworkHelper = NetworkHelper(application)
