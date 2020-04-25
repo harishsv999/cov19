@@ -15,5 +15,7 @@ data class CountryCodes(
 
     @Expose
     @SerializedName("ISO2")
-    var countryCode: String
+    var countryCode: String,
+
+    var countryFlagURL: String
 )

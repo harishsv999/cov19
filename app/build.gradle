@@ -30,11 +30,14 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.covid19api.com/\"")
+            buildConfigField("String", "BASE_URL_FLAG", "\"https://www.countryflags.io/\"")
         }
         release {
             minifyEnabled true // to apply the proguard
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://api.covid19api.com/\"")
+            buildConfigField("String", "BASE_URL_FLAG", "\"https://www.countryflags.io/\"")
+
         }
     }
 

@@ -1,13 +1,11 @@
 package com.tracker.covid.ui.countries
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.tracker.covid.R
 import com.tracker.covid.data.remote.model.CountryCodes
 import com.tracker.covid.ui.base.setImageURL
@@ -36,10 +34,8 @@ class CountriesAdapter(private val countiesList: List<CountryCodes>) :
         private val imageViewFlag: ImageView = view.flag
 
         fun bind(codes: CountryCodes) {
-            val URL = "https://www.countryflags.io/${codes.countryCode}/flat/64.png";
-
             tvCountryName.text = codes.countryName
-            imageViewFlag.setImageURL(URL)
+            imageViewFlag.setImageURL(codes.countryFlagURL)
         }
     }
 
