@@ -5,11 +5,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tracker.covid.R
 import com.tracker.covid.di.component.FragmentComponent
+import com.tracker.covid.ui.MainActivity
 import com.tracker.covid.ui.base.BaseFragment
-import com.tracker.covid.ui.home.HomeActivity
 import com.tracker.covid.ui.home.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_countries.*
-
 
 class CountriesFragment : BaseFragment<HomeViewModel>() {
 
@@ -18,7 +17,7 @@ class CountriesFragment : BaseFragment<HomeViewModel>() {
     override fun setUpvView(view: View) {
         rcv_country.layoutManager = LinearLayoutManager(activity)
         viewModel.getCountriesList()
-        viewModel.countriesList.observe(activity as HomeActivity, Observer {
+        viewModel.countriesList.observe(activity as MainActivity, Observer {
                 list->
             rcv_country.adapter = CountriesAdapter(list)
         })
