@@ -14,8 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 fun BottomNavigationView.setupWithNavController(
     navGraphIds: List<Int>,
     fragmentManager: FragmentManager,
-    containerId: Int
-): LiveData<NavController> {
+    containerId: Int){
 
     val graphIdToTagMap = SparseArray<String>()
     val selectedNavController = MutableLiveData<NavController>()
@@ -101,7 +100,6 @@ fun BottomNavigationView.setupWithNavController(
             }
         }
     }
-    return selectedNavController
 }
 
 private fun detachNavHostFragment(

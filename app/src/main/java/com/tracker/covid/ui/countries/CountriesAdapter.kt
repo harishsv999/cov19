@@ -1,13 +1,16 @@
 package com.tracker.covid.ui.countries
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.tracker.covid.R
 import com.tracker.covid.data.remote.model.CountryCodes
+import com.tracker.covid.ui.base.setImageURL
 import kotlinx.android.synthetic.main.countries_item.view.*
 
 class CountriesAdapter(private val countiesList: List<CountryCodes>) :
@@ -22,19 +25,21 @@ class CountriesAdapter(private val countiesList: List<CountryCodes>) :
     override fun getItemCount(): Int = countiesList.size
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.bind(countiesList[position].countryName)
+        holder.bind(countiesList[position])
     }
 
     /**
      * ViewHolder class for each row item.
      */
     class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvCountryName: TextView = view.country_name
-        private val imageViewFlag: ImageView = view.iv_flag
+        private val tvCountryName: TextView = view.countryName
+        private val imageViewFlag: ImageView = view.flag
 
-        fun bind(countryName: String?) {
-            tvCountryName.text = countryName
-            // imageViewFlag.sourc = currency.toString()
+        fun bind(codes: CountryCodes) {
+            val URL = "https://www.countryflags.io/${codes.countryCode}/flat/64.png";
+
+            tvCountryName.text = codes.countryName
+            imageViewFlag.setImageURL(URL)
         }
     }
 
