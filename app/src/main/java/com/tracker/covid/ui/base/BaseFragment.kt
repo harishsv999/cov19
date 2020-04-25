@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.tracker.covid.CoVidApplication
 import com.tracker.covid.di.component.DaggerFragmentComponent
 import com.tracker.covid.di.component.FragmentComponent
@@ -57,7 +59,13 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     protected abstract fun  injectDependencies (fragmentComponent: FragmentComponent)
 
     private fun createDaggerComponent() : FragmentComponent = DaggerFragmentComponent.builder()
-            .appComponent((activity!!.application as CoVidApplication).appComponent)
+            .appComponent((requireActivity().application as CoVidApplication).appComponent)
             .fragmentModule(FragmentModule(this))
             .build()
+}
+
+fun ImageView.setImageURL(url: String){
+    Glide.with(this)
+        .load(url)
+        .into(this)
 }
