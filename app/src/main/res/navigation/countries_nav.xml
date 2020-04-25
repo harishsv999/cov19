@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/action_countries"
+    android:id="@+id/countries_nav">
+
+    <fragment
+        android:id="@+id/action_countries"
+        android:name="com.tracker.covid.ui.countries.CountriesFragment"
+        android:label="fragment_countries"
+        tools:layout="@layout/fragment_countries" />
+</navigation>

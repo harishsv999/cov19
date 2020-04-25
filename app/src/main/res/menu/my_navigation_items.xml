@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/home_nav"
         android:title="@string/menu_home"
         android:icon="@drawable/home"/>
 
     <item
-        android:id="@+id/action_countries"
+        android:id="@+id/countries_nav"
         android:title="@string/menu_countries"
         android:icon="@drawable/flag"/>
 
     <item
-        android:id="@+id/action_live"
+        android:id="@+id/live_nav"
         android:title="@string/menu_live"
         android:icon="@drawable/live"/>
 
     <item
-        android:id="@+id/action_about"
+        android:id="@+id/about_nav"
         android:title="@string/menu_about"
         android:icon="@drawable/about"/>
 
